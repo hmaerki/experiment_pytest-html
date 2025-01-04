@@ -130,6 +130,7 @@ class ReportData:
 
     def add_test(self, test_data, report, outcome, logs):
         # regardless of pass or fail we must add teardown logging to "call"
+        print(f"TRACE: add_test({test_data=}, {report=}, {outcome=}, {logs=})")
         if report.when == "teardown":
             self.append_teardown_log(report)
 
