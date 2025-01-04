@@ -1,5 +1,4 @@
 import pathlib
-import pytest
 
 from pytest_html.util import _read_template
 from pytest_html.report_data import ReportData

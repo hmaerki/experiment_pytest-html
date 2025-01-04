@@ -115,6 +115,7 @@ class ReportData:
 
     @title.setter
     def title(self, title):
+        assert isinstance(title, str)
         self._data["title"] = title
 
     @property
@@ -126,11 +127,18 @@ class ReportData:
         self._total_duration = duration
 
     def set_data(self, key, value):
+        assert isinstance(key, str)
+        assert isinstance(value, dict|str)
         self._data[key] = value
 
     def add_test(self, test_data, report, outcome, logs):
         # regardless of pass or fail we must add teardown logging to "call"
-        print(f"TRACE: add_test({test_data=}, {report=}, {outcome=}, {logs=})")
+        import _pytest.reports
+        assert isinstance(test_data,dict)
+        # assert isinstance(report,_pytest.reports.TestReport|_pytest.reports.CollectReport)
+        assert isinstance(outcome, str)
+        assert isinstance(logs, list)
+        print(f"TRACE: add_test({outcome=}, {logs=})")
         if report.when == "teardown":
             self.append_teardown_log(report)
 

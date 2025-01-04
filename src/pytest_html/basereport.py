@@ -53,6 +53,7 @@ class BaseReport:
         generated = datetime.datetime.now()
         test_data = self._report.data
         test_data = json.dumps(test_data)
+        Path("report_data_hans.json").write_text(test_data)
         rendered_report = self._template.render(
             title=self._report.title,
             date=generated.strftime("%d-%b-%Y"),

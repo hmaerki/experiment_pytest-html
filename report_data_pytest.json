@@ -1,0 +1,128 @@
+{
+    "environment": {
+        "Python": "3.12.1",
+        "Platform": "Linux-6.5.0-1025-azure-x86_64-with-glibc2.31",
+        "Packages": {
+            "pytest": "8.3.4",
+            "pluggy": "1.5.0"
+        },
+        "Plugins": {
+            "anyio": "4.7.0",
+            "html": "0.1.dev534+geb7de8a.d20250104",
+            "metadata": "3.1.1"
+        },
+        "JAVA_HOME": "/usr/local/sdkman/candidates/java/current"
+    },
+    "tests": {
+        "testing/test_hans.py::test_fail": [
+            {
+                "extras": [],
+                "result": "Failed",
+                "testId": "testing/test_hans.py::test_fail",
+                "duration": "3 ms",
+                "resultsTableRow": [
+                    "<td class=\"col-result\">Failed</td>",
+                    "<td class=\"col-testId\">testing/test_hans.py::test_fail</td>",
+                    "<td class=\"col-duration\">3 ms</td>",
+                    "<td class=\"col-links\"></td>"
+                ],
+                "log": "def test_fail():\n&gt;       assert 1 == 2\nE       assert 1 == 2\n\ntesting/test_hans.py:4: AssertionError\n"
+            }
+        ],
+        "testing/test_hans.py::test_error": [
+            {
+                "extras": [],
+                "result": "Error",
+                "testId": "testing/test_hans.py::test_error::setup",
+                "duration": "1 ms",
+                "resultsTableRow": [
+                    "<td class=\"col-result\">Error</td>",
+                    "<td class=\"col-testId\">testing/test_hans.py::test_error::setup</td>",
+                    "<td class=\"col-duration\">1 ms</td>",
+                    "<td class=\"col-links\"></td>"
+                ],
+                "log": "@pytest.fixture\n    def fix():\n&gt;       raise Exception(&#x27;oops&#x27;)\nE       Exception: oops\n\ntesting/test_hans.py:8: Exception\n"
+            }
+        ],
+        "testing/test_hans.py::test_success": [
+            {
+                "extras": [],
+                "result": "Passed",
+                "testId": "testing/test_hans.py::test_success",
+                "duration": "0 ms",
+                "resultsTableRow": [
+                    "<td class=\"col-result\">Passed</td>",
+                    "<td class=\"col-testId\">testing/test_hans.py::test_success</td>",
+                    "<td class=\"col-duration\">0 ms</td>",
+                    "<td class=\"col-links\"></td>"
+                ],
+                "log": "No log output captured."
+            }
+        ],
+        "testing/test_hans.py::test_simple_interest_calculator_function": [
+            {
+                "extras": [],
+                "result": "Skipped",
+                "testId": "testing/test_hans.py::test_simple_interest_calculator_function::setup",
+                "duration": "0 ms",
+                "resultsTableRow": [
+                    "<td class=\"col-result\">Skipped</td>",
+                    "<td class=\"col-testId\">testing/test_hans.py::test_simple_interest_calculator_function::setup</td>",
+                    "<td class=\"col-duration\">0 ms</td>",
+                    "<td class=\"col-links\"></td>"
+                ],
+                "log": "(&#x27;/workspaces/experiment_pytest-html/testing/test_hans.py&#x27;, 17, &#x27;Skipped: Skipping this FUNCTION level test - Simple Interest&#x27;)\n"
+            }
+        ],
+        "testing/test_hans.py::TestInterestCalculator::test_simple_interest_calculator_class": [
+            {
+                "extras": [],
+                "result": "Skipped",
+                "testId": "testing/test_hans.py::TestInterestCalculator::test_simple_interest_calculator_class::setup",
+                "duration": "0 ms",
+                "resultsTableRow": [
+                    "<td class=\"col-result\">Skipped</td>",
+                    "<td class=\"col-testId\">testing/test_hans.py::TestInterestCalculator::test_simple_interest_calculator_class::setup</td>",
+                    "<td class=\"col-duration\">0 ms</td>",
+                    "<td class=\"col-links\"></td>"
+                ],
+                "log": "(&#x27;/workspaces/experiment_pytest-html/testing/test_hans.py&#x27;, 24, &#x27;Skipped: Skipping this CLASS level test&#x27;)\n"
+            }
+        ],
+        "testing/test_hans.py::TestInterestCalculator::test_compound_interest_calculator_class": [
+            {
+                "extras": [],
+                "result": "Skipped",
+                "testId": "testing/test_hans.py::TestInterestCalculator::test_compound_interest_calculator_class::setup",
+                "duration": "0 ms",
+                "resultsTableRow": [
+                    "<td class=\"col-result\">Skipped</td>",
+                    "<td class=\"col-testId\">testing/test_hans.py::TestInterestCalculator::test_compound_interest_calculator_class::setup</td>",
+                    "<td class=\"col-duration\">0 ms</td>",
+                    "<td class=\"col-links\"></td>"
+                ],
+                "log": "(&#x27;/workspaces/experiment_pytest-html/testing/test_hans.py&#x27;, 28, &#x27;Skipped: Skipping this CLASS level test&#x27;)\n"
+            }
+        ],
+        "testing/test_hans.py::test_simple_interest_calculator_xfail_missing_arg": [
+            {
+                "extras": [],
+                "result": "XFailed",
+                "testId": "testing/test_hans.py::test_simple_interest_calculator_xfail_missing_arg",
+                "duration": "1 ms",
+                "resultsTableRow": [
+                    "<td class=\"col-result\">XFailed</td>",
+                    "<td class=\"col-testId\">testing/test_hans.py::test_simple_interest_calculator_xfail_missing_arg</td>",
+                    "<td class=\"col-duration\">1 ms</td>",
+                    "<td class=\"col-links\"></td>"
+                ],
+                "log": "@pytest.mark.xfail(reason=&quot;Missing Arguments&quot;)\n    def test_simple_interest_calculator_xfail_missing_arg() -&gt; None:\n&gt;       value = simple_interest(8)  # Missing Argument - FAIL\nE       NameError: name &#x27;simple_interest&#x27; is not defined\n\ntesting/test_hans.py:34: NameError\n"
+            }
+        ]
+    },
+    "renderCollapsed": [
+        "passed"
+    ],
+    "initialSort": "result",
+    "title": "report.html"
+}
