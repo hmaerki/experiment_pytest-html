@@ -125,18 +125,11 @@ def main() -> None:
         },
     }
     report_data.set_data("environment", environment)
+    report_data.title = "My report 2"
 
-    if True:
 
-        def pytest_html_results_table_header(cells):
-            cells.insert(2, "<th>Description</th>")
-            cells.insert(
-                1, '<th class="sortable time" data-column-type="time">Time</th>'
-            )
-
-        headers = report_data.table_header
-        pytest_html_results_table_header(headers)
-        report_data.table_header = _fix_py(headers)
+    report_data.table_header.append("<th>Description</th>")
+    report_data.table_header.append('<th class="sortable time" data-column-type="time">Time</th>')
 
     report.running_state = "started"
 
@@ -146,7 +139,8 @@ def main() -> None:
         nodeid="nodeid-collectreport",
         outcome="failed",
         when="setup",
-        longrepr=None,
+        longrepr="This is longrepr",
+        longreprtext="This is longreprtext",
         result=["Module test_hans_a.py", "Module test_hans_b.py"],
     )
     report._process_report(
@@ -159,36 +153,42 @@ def main() -> None:
 
     # @pytest.hookimpl(trylast=True)
     # def pytest_collection_finish(self, session):
-    report._report.collected_items = 43
+    report_data.collected_items = 43
 
     # @pytest.hookimpl(trylast=True)
     # def pytest_runtest_logreport(self, report):
     # key_when_outcome = ("setup", "passed")
-    key_when_outcome = ("teardown", "passed")
-    test_report1 = TestReport(
-        nodeid="bliblablo",
-        location=("file42", 44),
-        keywords={},
-        result=[],
-        outcome="passed",
-        longrepr=None,
-        when="setup",
-    )
-    nodeid = collect_report.nodeid
-    nodeid = test_report1.nodeid
-    report._reports[nodeid][key_when_outcome] = [test_report1]
+    if False:
+        key_when_outcome = ("teardown", "passed")
+        test_report1 = TestReport(
+            nodeid="bliblablo",
+            location=("file42", 44),
+            keywords={},
+            result=[],
+            outcome="passed",
+            longrepr=None,
+            when="setup",
+        )
+        nodeid = collect_report.nodeid
+        nodeid = test_report1.nodeid
+        report._reports[nodeid][key_when_outcome] = [test_report1]
 
     # @pytest.hookimpl(trylast=True)
     # def pytest_sessionfinish(self, session):
 
-    config.hook.pytest_html_results_summary(
-        prefix=report._report.additional_summary["prefix"],
-        summary=report._report.additional_summary["summary"],
-        postfix=report._report.additional_summary["postfix"],
-        session=None,
-    )
-    report._report.running_state = "finished"
-    report._report.total_duration = 4242
+    # config.hook.pytest_html_results_summary(
+    #     prefix=report_data.additional_summary["prefix"],
+    #     summary=report_data.additional_summary["summary"],
+    #     postfix=report_data.additional_summary["postfix"],
+    #     session=None,
+    # )
+
+    # pytest_html_results_summary
+    report_data.additional_summary["prefix"].extend(["<p>foo: bar additional prefix</p>"])
+    report_data.additional_summary["summary"].extend(["<p>foo: bar. additional summary</p>"])
+    report_data.additional_summary["postfix"].extend(["<p>foo: bar. additional postfix</p>"])
+    report_data.running_state = "finished"
+    report_data.total_duration = 4242
     report._generate_report()
     print(f"{report._report_path=}")
 
